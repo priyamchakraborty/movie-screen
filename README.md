@@ -1,4 +1,4 @@
-# Movie Database App
+# MOVIE-SCREEN The Movie Database App
 
 This project is a movie database application that showcases movies listed according to the API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/). It includes search functionality for specific films and a click-to-favorite feature using local storage.
 
