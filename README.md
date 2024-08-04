@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Movie Database App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a movie database application that showcases movies listed according to the API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/). It includes search functionality for specific films and a click-to-favorite feature using local storage.
 
 ## Available Scripts
 
