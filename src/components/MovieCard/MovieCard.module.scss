@@ -1,0 +1,94 @@
+.movieCard {
+    position: relative;
+}
+
+.favoriteIcon {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    z-index: 3;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: -6px;
+        background: #e85858;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        height: 30px;
+        width: 30px;
+        z-index: -1;
+    }
+}
+
+.card {
+    background: #3d5c9c;
+    border-radius: 10px;
+    width: 258px;
+    overflow: hidden;
+    cursor: pointer;
+
+    .moviePoster {
+        width: 100%;
+        height: 390px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.2s ease-in-out;
+        }
+    }
+
+    .info {
+        padding: 15px;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+
+        h4 {
+            padding: 0;
+            margin: 0;
+            width: 70%;
+        }
+
+        .progressRateContainer {
+            position: relative;
+
+            .rating {
+                position: absolute;
+                top: 14px;
+                left: 14px;
+            }
+
+            .progressBar {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+
+                progress {
+                    visibility: hidden;
+                    height: 0;
+                    width: 0;
+                }
+            }
+        }
+    }
+
+    &:hover {
+
+        .moviePoster {
+
+            img {
+                transform: scale(1.5);
+            }
+        }
+    }
+}
