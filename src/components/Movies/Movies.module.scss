@@ -18,6 +18,7 @@
     right: 0;
     font-size: 20px;
     z-index: 3;
+
     &:before {
         content: "";
         position: absolute;
@@ -88,8 +89,11 @@
             }
         }
     }
+
     &:hover {
+
         .moviePoster {
+
             img {
                 transform: scale(1.5);
             }
@@ -108,17 +112,20 @@
     justify-content: center;
     align-items: center;
     z-index: 5;
+
     .modal {
         border-radius: 10px;
         width: 1024px;
         text-align: center;
         overflow: hidden;
         position: relative;
+
         img {
             object-fit: cover;
             width: 100%;
             height: 100%;
         }
+
         .overlay {
             position: absolute;
             width: 100%;
@@ -129,6 +136,7 @@
                 rgba(0, 0, 0, 0) 100%
             );
         }
+
         .modalBody {
             position: absolute;
             left: 0;
@@ -142,10 +150,12 @@
             justify-content: end;
             align-items: flex-start;
             text-align: left;
+
             h2 {
                 font-size: 35px;
             }
         }
+
         .closeButton {
             background: transparent;
             border: 0;
@@ -169,12 +179,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .logo {
         img{
             width: 150px;
         }
     }
     .searchContainer{
+
         input {
             padding: 10px;
             border-radius: 5px;
@@ -188,6 +200,7 @@ header {
 }
 
 .favoritesLink {
+    
     button {
         background: #3d5c9c;
         color: #fff;
