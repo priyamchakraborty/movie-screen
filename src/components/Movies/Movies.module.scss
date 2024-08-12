@@ -3,7 +3,33 @@
     flex-wrap: wrap;
     gap: 30px;
     padding: 15px;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+}
+
+.movieCard {
+    position: relative;
+}
+
+.favoriteIcon {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    z-index: 3;
+    &:before {
+        content: "";
+        position: absolute;
+        top: -11px;
+        left: -11px;
+        background: #e85858;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        height: 40px;
+        width: 40px;
+        z-index: -1;
+    }
 }
 
 .card {
@@ -81,6 +107,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
     .modal {
         border-radius: 10px;
         width: 1024px;
@@ -133,6 +160,44 @@
                 font-size: 40px;
                 color: #fff;
             }
+        }
+    }
+}
+
+header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+        img{
+            width: 150px;
+        }
+    }
+    .searchContainer{
+        input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 0;
+            width: 300px;
+            background: #3d5c9c;
+            color: #fff;
+            font-size: 18px;
+        }
+    }
+}
+
+.favoritesLink {
+    button {
+        background: #3d5c9c;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 16px;
+        border: 1px solid #fff;
+        cursor: pointer;
+        &:hover {
+            background: #2b3f6d;
         }
     }
 }
