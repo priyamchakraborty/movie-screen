@@ -4,6 +4,12 @@ This project is a movie database application that showcases movies listed accord
 
 ## Available Scripts
 
+Download thelatest node
+
+To install dependencies, install the packages
+
+### `npm install`
+
 In the project directory, you can run:
 
 ### `npm start`
