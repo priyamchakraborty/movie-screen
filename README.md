@@ -4,7 +4,7 @@ This project is a movie database application that showcases movies listed accord
 
 ## Available Scripts
 
-Download thelatest node
+Download the latest node JS
 
 To install dependencies, install the packages
 
