@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import styles from "./MovieList.module.scss";
+import { FaRegTimesCircle } from "react-icons/fa";
 
 const MovieList = ({
   movies,
@@ -33,11 +34,19 @@ const MovieList = ({
         />
       ))}
       {selectedMovie && (
-        <div className={styles.modalOverlay}>
+        <div
+          className={styles.modalOverlay}
+          onClick={e => {
+            if (e.target.classList.contains(styles.modalOverlay)) {
+              closeModal();
+            }
+          }}
+        >
           <div className={styles.modal}>
             <button onClick={closeModal} className={styles.closeButton}>
-              X
+              <FaRegTimesCircle />
             </button>
+            <div className={styles.overlay}></div>
             <img
               src={`${process.env.REACT_APP_IMAGE_URL}${selectedMovie.backdrop_path}`}
               alt={selectedMovie.title}
@@ -45,7 +54,9 @@ const MovieList = ({
             <div className={styles.modalBody}>
               <h2>{selectedMovie.title}</h2>
               <p>{selectedMovie.overview}</p>
-              <p>Release: {selectedMovie.formattedDate}</p>
+              <p>
+                <b>Release:</b> {selectedMovie.formattedDate}
+              </p>
             </div>
           </div>
         </div>

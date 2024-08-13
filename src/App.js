@@ -52,10 +52,12 @@ const App = () => {
   // Open modal function
   const openModal = movie => {
     setSelectedMovie(movie);
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setSelectedMovie(null);
+    document.body.style.overflow = "auto";
   };
 
   return (
