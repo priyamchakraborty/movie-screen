@@ -11,8 +11,8 @@ const Search = ({
 }) => {
   useEffect(() => {
     setLoading(true);
-    const filteredMovies = movieList.filter(movie =>
-      movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredMovies = movieList.filter((movie) =>
+      movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
     );
     setFilteredMovieList(filteredMovies);
     setLoading(false);
@@ -24,10 +24,9 @@ const Search = ({
         type="text"
         placeholder="Search movies..."
         value={searchTerm}
-        onChange={e => setSearchTerm(e.target.value)}
+        onChange={(e) => setSearchTerm(e.target.value)}
         className={styles.searchInput}
       />
-      {loading && <div className={styles.loader}>Loading...</div>}
     </div>
   );
 };
