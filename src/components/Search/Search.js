@@ -1,22 +1,39 @@
 import React, { useEffect } from "react";
 import styles from "./Search.module.scss";
 
+const api_key = process.env.REACT_APP_API_KEY;
+const search_URL = process.env.REACT_APP_SEARCH_URL;
+const data_URL = process.env.REACT_APP_DATA_URL;
+
 const Search = ({
   searchTerm,
   setSearchTerm,
-  movieList,
-  loading,
-  setLoading,
   setFilteredMovieList,
+  setLoading,
 }) => {
   useEffect(() => {
-    setLoading(true);
-    const filteredMovies = movieList.filter((movie) =>
-      movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
-    );
-    setFilteredMovieList(filteredMovies);
-    setLoading(false);
-  }, [searchTerm, movieList, setFilteredMovieList, setLoading]);
+    const fetchMovies = async () => {
+      setLoading(true);
+
+      try {
+        const url = searchTerm
+          ? `${search_URL}?api_key=${api_key}&query=${searchTerm}`
+          : `${data_URL}discover/movie?api_key=${api_key}`;
+
+        const res = await fetch(url);
+        const json = await res.json();
+        setFilteredMovieList(json.results || []);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+
+      setLoading(false);
+    };
+
+    const debounceFetch = setTimeout(fetchMovies, 500);
+
+    return () => clearTimeout(debounceFetch);
+  }, [searchTerm, setFilteredMovieList, setLoading]);
 
   return (
     <div className={styles.searchContainer}>

@@ -17,7 +17,7 @@ const App = () => {
 
   const fetchMovies = async () => {
     try {
-      const res = await fetch(`${data_URL}${api_key}`);
+      const res = await fetch(`${data_URL}discover/movie?api_key=${api_key}`);
       const json = await res.json();
       setMovieList(json.results);
       setFilteredMovieList(json.results);
@@ -38,10 +38,10 @@ const App = () => {
     loadFavorites();
   }, []);
 
-  const toggleFavorite = id => {
+  const toggleFavorite = (id) => {
     let updatedFavorites;
     if (favoriteMovies.includes(id)) {
-      updatedFavorites = favoriteMovies.filter(movieId => movieId !== id);
+      updatedFavorites = favoriteMovies.filter((movieId) => movieId !== id);
     } else {
       updatedFavorites = [...favoriteMovies, id];
     }
@@ -50,7 +50,7 @@ const App = () => {
   };
 
   // Open modal function
-  const openModal = movie => {
+  const openModal = (movie) => {
     setSelectedMovie(movie);
     document.body.style.overflow = "hidden";
   };

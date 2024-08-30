@@ -7,9 +7,13 @@ const FavoriteMovies = ({
   openModal,
   favoriteMovies,
 }) => {
+  const favoriteMovieList = movies.filter((movie) =>
+    favoriteMovies.includes(movie.id),
+  );
+
   return (
     <MovieList
-      movies={movies}
+      movies={favoriteMovieList}
       toggleFavorite={toggleFavorite}
       openModal={openModal}
       favoriteMovies={favoriteMovies}

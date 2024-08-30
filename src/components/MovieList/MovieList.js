@@ -14,29 +14,26 @@ const MovieList = ({
   if (movies.length === 0) {
     return (
       <div className={styles.listContainer}>
-        <div className={styles.noMovies}>
-          If its not in this list it is not a popular movie
-        </div>
-        ;
+        <div className={styles.noMovies}>No movies to display.</div>
       </div>
     );
   }
 
   return (
     <div className={styles.listContainer}>
-      {movies.map(movie => (
+      {movies.map((movie) => (
         <MovieCard
           key={movie.id}
           movie={movie}
           toggleFavorite={toggleFavorite}
           openModal={openModal}
-          isFavorite={favoriteMovies.includes(movie.id)}
+          isFavorite={favoriteMovies.includes(movie.id)} // Check if the movie is in the favorites list
         />
       ))}
       {selectedMovie && (
         <div
           className={styles.modalOverlay}
-          onClick={e => {
+          onClick={(e) => {
             if (e.target.classList.contains(styles.modalOverlay)) {
               closeModal();
             }
