@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MovieList from "./components/MovieList/MovieList";
+import MovieDetails from "./components/MovieDetails/MovieDetails";
+import Loader from "./components/Loader/Loader";
 import styles from "./App.module.scss";
 
 const data_URL = process.env.REACT_APP_DATA_URL;
@@ -10,7 +13,6 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
   const [filteredMovieList, setFilteredMovieList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -38,10 +40,10 @@ const App = () => {
     loadFavorites();
   }, []);
 
-  const toggleFavorite = (id) => {
+  const toggleFavorite = id => {
     let updatedFavorites;
     if (favoriteMovies.includes(id)) {
-      updatedFavorites = favoriteMovies.filter((movieId) => movieId !== id);
+      updatedFavorites = favoriteMovies.filter(movieId => movieId !== id);
     } else {
       updatedFavorites = [...favoriteMovies, id];
     }
@@ -49,42 +51,38 @@ const App = () => {
     localStorage.setItem("favoriteMovies", JSON.stringify(updatedFavorites));
   };
 
-  // Open modal function
-  const openModal = (movie) => {
-    setSelectedMovie(movie);
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeModal = () => {
-    setSelectedMovie(null);
-    document.body.style.overflow = "auto";
-  };
-
   return (
-    <div className={styles.appContainer}>
-      <Header
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        showFavorites={showFavorites}
-        setShowFavorites={setShowFavorites}
-        loading={loading}
-        setLoading={setLoading}
-        movieList={movieList}
-        setFilteredMovieList={setFilteredMovieList}
-      />
-      {loading ? (
-        <div className={styles.loader}>Loading...</div>
-      ) : (
-        <MovieList
-          movies={filteredMovieList}
-          favoriteMovies={favoriteMovies}
-          toggleFavorite={toggleFavorite}
-          openModal={openModal}
-          closeModal={closeModal}
-          selectedMovie={selectedMovie}
+    <Router>
+      <div className={styles.appContainer}>
+        <Header
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          showFavorites={showFavorites}
+          setShowFavorites={setShowFavorites}
+          loading={loading}
+          setLoading={setLoading}
+          movieList={movieList}
+          setFilteredMovieList={setFilteredMovieList}
         />
-      )}
-    </div>
+        {loading ? (
+          <Loader />
+        ) : (
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MovieList
+                  movies={filteredMovieList}
+                  favoriteMovies={favoriteMovies}
+                  toggleFavorite={toggleFavorite}
+                />
+              }
+            />
+            <Route path="/movie/:id" element={<MovieDetails />} />
+          </Routes>
+        )}
+      </div>
+    </Router>
   );
 };
 

@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
 import logo from "./../Images/movie-screen-logo.png";
+import { FaArrowLeft } from "react-icons/fa";
+
 import Search from "../Search/Search";
 
 const Header = ({
@@ -13,6 +16,9 @@ const Header = ({
   loading,
   setLoading,
 }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (showFavorites) {
       const favoriteMovieList = movieList.filter(movie =>
@@ -37,10 +43,17 @@ const Header = ({
         setLoading={setLoading}
         setFilteredMovieList={setFilteredMovieList}
       />
-      <div className={styles.favoritesLink}>
-        <button onClick={() => setShowFavorites(!showFavorites)}>
-          {showFavorites ? "Show All Movies" : "Show Favorite Movies"}
-        </button>
+      <div className={styles.headerButton}>
+        {location.pathname.includes("/movie/") ? (
+          <button onClick={() => navigate(-1)}>
+            <FaArrowLeft />
+            Back
+          </button>
+        ) : (
+          <button onClick={() => setShowFavorites(!showFavorites)}>
+            {showFavorites ? "Show All Movies" : "Show Favorite Movies"}
+          </button>
+        )}
       </div>
     </header>
   );

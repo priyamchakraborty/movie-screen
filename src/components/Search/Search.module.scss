@@ -10,5 +10,10 @@
             background: #3d5c9c;
             color: #fff;
             font-size: 18px;
+            &:focus {
+                    outline: none;
+                    background: #fff;
+                    color: black;
+                }
         }
     }

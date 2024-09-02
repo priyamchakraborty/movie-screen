@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import styles from "./MovieCard.module.scss";
 
-const MovieCard = ({ movie, toggleFavorite, openModal, isFavorite }) => {
+const MovieCard = ({ movie, toggleFavorite, isFavorite }) => {
+  const navigate = useNavigate();
+
   const { id, poster_path, title, vote_average, release_date } = movie;
   const dateStr = release_date;
   const date = new Date(dateStr);
@@ -29,17 +32,7 @@ const MovieCard = ({ movie, toggleFavorite, openModal, isFavorite }) => {
           <FaRegHeart className={styles.notFavorite} />
         )}
       </div>
-      <div
-        className={styles.card}
-        onClick={() =>
-          openModal({
-            title,
-            overview: movie.overview,
-            backdrop_path: movie.backdrop_path,
-            formattedDate,
-          })
-        }
-      >
+      <div className={styles.card} onClick={() => navigate(`/movie/${id}`)}>
         <div className={styles.moviePoster}>
           <img
             src={`${process.env.REACT_APP_IMAGE_URL}${poster_path}`}

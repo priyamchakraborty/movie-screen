@@ -38,10 +38,10 @@ const Search = ({
   return (
     <div className={styles.searchContainer}>
       <input
-        type="text"
+        type="search"
         placeholder="Search movies..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={e => setSearchTerm(e.target.value)}
         className={styles.searchInput}
       />
     </div>
