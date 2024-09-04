@@ -4,9 +4,13 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import styles from "./MovieCard.module.scss";
 
 const MovieCard = ({ movie, toggleFavorite, isFavorite }) => {
+  // Get the navigate function from the react-router-dom package
   const navigate = useNavigate();
 
+  // Destructure the movie object
   const { id, poster_path, title, vote_average, release_date } = movie;
+
+  // Format the release_date, vote_average, and vote_average to display on the card
   const dateStr = release_date;
   const date = new Date(dateStr);
   const formattedDate = date.toLocaleDateString("en-GB", {
@@ -23,6 +27,7 @@ const MovieCard = ({ movie, toggleFavorite, isFavorite }) => {
         className={styles.favoriteIcon}
         onClick={e => {
           e.stopPropagation();
+          // Pass the id of the movie to the toggleFavorite function
           toggleFavorite(id);
         }}
       >

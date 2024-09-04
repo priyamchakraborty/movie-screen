@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MovieList from "./components/MovieList/MovieList";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
+import { useLocation } from "react-router-dom";
 import Loader from "./components/Loader/Loader";
 import styles from "./App.module.scss";
 
@@ -18,6 +19,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchMovies = async () => {
+    // Fetch the movies from the API
     try {
       const res = await fetch(`${data_URL}discover/movie?api_key=${api_key}`);
       const json = await res.json();
@@ -28,6 +30,7 @@ const App = () => {
     }
   };
 
+  // Load the favorite movies from local storage
   const loadFavorites = () => {
     const storedFavorites = JSON.parse(localStorage.getItem("favoriteMovies"));
     if (storedFavorites) {
@@ -35,11 +38,13 @@ const App = () => {
     }
   };
 
+  // Fetch the movies and load the favorites when the component mounts
   useEffect(() => {
     fetchMovies();
     loadFavorites();
   }, []);
 
+  // Toggle the favorite state of a movie
   const toggleFavorite = id => {
     let updatedFavorites;
     if (favoriteMovies.includes(id)) {

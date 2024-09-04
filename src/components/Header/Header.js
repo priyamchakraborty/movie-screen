@@ -16,16 +16,22 @@ const Header = ({
   loading,
   setLoading,
 }) => {
+  // Get the current location and navigate function from the react-router-dom package
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+    // If the showFavorites state is true, filter the movieList array
     if (showFavorites) {
+      // Filter the movies array to only include the movies that are in the favoriteMovies array
       const favoriteMovieList = movieList.filter(movie =>
         JSON.parse(localStorage.getItem("favoriteMovies")).includes(movie.id)
       );
+
+      // Pass the favoriteMovieList array to the setFilteredMovieList function
       setFilteredMovieList(favoriteMovieList);
     } else {
+      // If the showFavorites state is false, pass the movieList array to the setFilteredMovieList function
       setFilteredMovieList(movieList);
     }
   }, [showFavorites, movieList, setFilteredMovieList]);
@@ -35,6 +41,7 @@ const Header = ({
       <div className={styles.logo}>
         <img src={logo} alt="Logo" />
       </div>
+      {/* Pass the setSearchTerm, searchTerm, movieList, loading, setLoading, and setFilteredMovieList functions to the Search component */}
       <Search
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -44,6 +51,7 @@ const Header = ({
         setFilteredMovieList={setFilteredMovieList}
       />
       <div className={styles.headerButton}>
+        {/* If the pathname includes "/movie/", display a back button or show favorites  */}
         {location.pathname.includes("/movie/") ? (
           <button onClick={() => navigate(-1)}>
             <FaArrowLeft />

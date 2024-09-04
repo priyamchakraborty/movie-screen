@@ -1,19 +1,19 @@
-    .searchContainer{
-        width: 33%;
-        text-align: center;
+.searchContainer {
+    width: 33%;
+    text-align: center;
 
-        input {
-            padding: 10px;
-            border-radius: 5px;
-            border: 0;
-            width: 300px;
-            background: #3d5c9c;
-            color: #fff;
-            font-size: 18px;
-            &:focus {
-                    outline: none;
-                    background: #fff;
-                    color: black;
-                }
+    input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 0;
+        width: 300px;
+        background: #9c3d89;
+        color: #fff;
+        font-size: 18px;
+        &:focus {
+            outline: none;
+            background: #fff;
+            color: black;
         }
     }
+}

@@ -9,17 +9,17 @@ header {
     .logo {
         width: 33%;
 
-        img{
+        img {
             width: 150px;
         }
     }
-    
-                .headerButton {
+
+    .headerButton {
         width: 33%;
         text-align: right;
-    
+
         button {
-            background: #3d5c9c;
+            background: #9c3d89;
             color: #fff;
             padding: 10px 20px;
             border-radius: 10px;
@@ -29,13 +29,13 @@ header {
             width: 205px;
             transition: all 0.2s ease;
             svg {
-                    position: relative;
-                    top: 3px;
-                    right: 5px;
-                }
+                position: relative;
+                top: 3px;
+                right: 5px;
+            }
             &:hover {
                 background: #fff;
-                color: #3d5c9c;
+                color: #9c3d89;
             }
         }
     }

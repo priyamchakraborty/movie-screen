@@ -8,10 +8,12 @@ const data_URL = process.env.REACT_APP_DATA_URL;
 const image_URL = process.env.REACT_APP_IMAGE_URL;
 
 const MovieDetails = () => {
+  // Get the id from the URL
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
+    // Fetch the movie details using the id
     const fetchMovieDetails = async () => {
       try {
         const res = await fetch(`${data_URL}movie/${id}?api_key=${api_key}`);
@@ -23,6 +25,7 @@ const MovieDetails = () => {
       }
     };
 
+    // Call the fetchMovieDetails function
     fetchMovieDetails();
   }, [id]);
 
@@ -57,7 +60,7 @@ const MovieDetails = () => {
                   {new Date(movie.release_date).toLocaleDateString()}
                 </p>
                 <p>
-                  <b>Rating:</b> {movie.vote_average}
+                  <b>Rating:</b> {movie.vote_average.toFixed(1)}
                 </p>
                 <p>
                   <b>Genre:</b>{" "}
