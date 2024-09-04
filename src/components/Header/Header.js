@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
 import logo from "./../Images/movie-screen-logo.png";
 import { FaArrowLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import Search from "../Search/Search";
 
@@ -39,7 +40,9 @@ const Header = ({
   return (
     <header className={styles.headerContainer}>
       <div className={styles.logo}>
-        <img src={logo} alt="Logo" />
+        <Link to="/">
+          <img src={logo} alt="Logo" />
+        </Link>
       </div>
       {/* Pass the setSearchTerm, searchTerm, movieList, loading, setLoading, and setFilteredMovieList functions to the Search component */}
       <Search

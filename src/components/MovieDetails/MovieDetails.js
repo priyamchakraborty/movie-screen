@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import { api_key, data_URL, image_URL } from "../apiConfig";
 import styles from "./MovieDetails.module.scss";
-
-const api_key = process.env.REACT_APP_API_KEY;
-const data_URL = process.env.REACT_APP_DATA_URL;
-const image_URL = process.env.REACT_APP_IMAGE_URL;
 
 const MovieDetails = () => {
   // Get the id from the URL

@@ -5,10 +5,9 @@ import MovieList from "./components/MovieList/MovieList";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 import { useLocation } from "react-router-dom";
 import Loader from "./components/Loader/Loader";
+import { api_key, data_URL } from "./components/apiConfig";
 import styles from "./App.module.scss";
 
-const data_URL = process.env.REACT_APP_DATA_URL;
-const api_key = process.env.REACT_APP_API_KEY;
 
 const App = () => {
   const [movieList, setMovieList] = useState([]);

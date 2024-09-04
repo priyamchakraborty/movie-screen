@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { api_key, data_URL, search_URL } from "../apiConfig";
 import styles from "./Search.module.scss";
-
-const api_key = process.env.REACT_APP_API_KEY;
-const search_URL = process.env.REACT_APP_SEARCH_URL;
-const data_URL = process.env.REACT_APP_DATA_URL;
 
 const Search = ({
   searchTerm,
